@@ -1,0 +1,13 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap/scss/variables.scss";
+@import "../node_modules/bootstrap/scss/mixins.scss";
+
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+
+$app-yellow: rgb(226, 207, 96);
+$app-green: rgb(29, 158, 158);
+
+.btn-app-yellow{
+  background-color: $app-yellow;
+}
+

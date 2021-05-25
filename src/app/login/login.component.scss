@@ -1,0 +1,27 @@
+@import "../../styles.scss";
+
+.panel {
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  background: linear-gradient($app-green 60%, darken($app-green, 40%));
+  ;
+}
+
+.panel__body {
+  background-color: $app-yellow;
+  border-radius: 3%;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+@media (min-width: 991px) {
+  .panel__body {
+    max-height: 50vh;
+  }
+}
+
+.fa-fw {
+  cursor: pointer;
+}

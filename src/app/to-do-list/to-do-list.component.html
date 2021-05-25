@@ -1,0 +1,55 @@
+<app-topbar></app-topbar>
+<div class="panel row m-0">
+  <div class="text-center col-md-12 mt-4">
+    <h2>To Do List</h2>
+  </div>
+  <div *ngIf="toDoList && toDoList.length > 0" class="col-md-6 to-do-list">
+    <div class="row mb-4">
+      <div class="input-group col-md-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i (click)="search()" class="fa fa-fw fa-search text-info icon-big"></i>
+          </span>
+        </div>
+        <input type="text" #searchField (keyup)="search(searchField.value)" name="search" class="form-control"
+          placeholder="Search...">
+      </div>
+      <div class="d-flex ml-auto">
+        <button class="btn btn-info mr-2" (click)="openAddModal()">
+          <i class="fa fa-fw fa-plus icon-big" data-placement="right" title="Add new item"></i>
+        </button>
+        <span *ngIf="isShowingAll; then hideDoneBtn else showDoneBtn"></span>
+        <ng-template #hideDoneBtn>
+          <button class="btn btn-app-yellow mr-4" (click)="toggleShowAll()">
+            <i class="fa fa-fw fa-eye-slash icon-big" data-placement="right" title="Hide done items"></i>
+          </button>
+        </ng-template>
+        <ng-template #showDoneBtn>
+          <button class="btn btn-info mr-4" (click)="toggleShowAll()">
+            <i class="fa fa-fw fa-eye icon-big" data-placement="right" title="Show done items"></i>
+          </button>
+        </ng-template>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-8">
+        <h4>Task</h4>
+      </div>
+      <div class="col-md-2 text-center">
+        <h4>Status</h4>
+      </div>
+      <div class="col-md-2 text-center"></div>
+    </div>
+    <div class="row mt-2" *ngFor="let item of filteredList">
+      <div class="col-md-8">{{item.task}}</div>
+      <div class="col-md-2 text-center"><input type="checkbox" [(ngModel)]="item.isDone" class="form-check-input"
+          (change)="updateList()" />
+      </div>
+      <div class="col-md-2 text-center"><button class="btn btn-info p-0" (click)="openEditModal(item)">
+          <i class="fa fa-fw fa-pencil" data-placement="right" title="Edit item"></i>
+        </button>
+        <button class="btn btn-danger p-0 ml-2" (click)="deleteItem(item)">
+          <i class="fa fa-fw fa-trash" data-placement="right" title="Delete item"></i>
+        </button></div>
+    </div>
+  </div>

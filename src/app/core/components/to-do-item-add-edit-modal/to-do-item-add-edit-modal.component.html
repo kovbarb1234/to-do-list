@@ -1,0 +1,25 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">{{title}}</h4>
+      <button type="button" class="close ml-auto" (click)="close()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form (keyup.enter)="save(task)" #toDoForm="ngForm">
+        <div class="form-group">
+          <label for="task">Task</label>
+          <input type="text" [(ngModel)]="task" name="task" class="form-control" placeholder="{{placeHolder}}"
+            #taskField="ngModel" required>
+          <div *ngIf="taskField.invalid && (taskField.dirty || taskField.touched)" class="alert alert-danger">
+            <div *ngIf="taskField.errors" class="error-message">
+              Please enter task!
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="save(task)">Save</button>
+    </div>
+  </div>
+</div>
